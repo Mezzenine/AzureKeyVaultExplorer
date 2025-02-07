@@ -140,46 +140,53 @@
                             BorderThickness="1"
                             CornerRadius="4"
                             IsVisible="{Binding IsSecret}">
-                            <ScrollViewer VerticalScrollBarVisibility="Visible">
-                                <Border>
-                                    <StackPanel VerticalAlignment="Stretch">
-                                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="*"  VerticalAlignment="Stretch">
-                                        <TextBlock
-                                            Grid.Column="0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Bottom"
-                                            IsVisible="{Binding !#ShowToggleButton.IsChecked}"
-                                            Text="{Binding SecretHidden}"
-                                            />
-                                        <SelectableTextBlock
-                                            Grid.Column="0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Center"
-                                            xml:space="preserve"
-                                            IsVisible="{Binding #ShowToggleButton.IsChecked}"
-                                            Text="{Binding SecretPlainText}" />
-                                        <ToggleButton
-                                            Name="ShowToggleButton"
-                                            Grid.Column="1"
-                                            Height="30"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Top"
-                                            Command="{Binding ShouldShowValueCommand}"
-                                            CommandParameter="{Binding ShowValue}"
-                                            Content="&#xE7B3;"
-                                            CornerRadius="4"
-                                            FontFamily="{StaticResource SymbolThemeFontFamily}"
-                                            FontSize="20"
-                                            IsChecked="{Binding ShowValue}"
-                                            RenderOptions.TextRenderingMode="Antialias"
-                                            Theme="{StaticResource TransparentToggleButton}"
-                                            ToolTip.Tip="Show/Hide"
-                                            ToolTip.VerticalOffset="10"
-                                            ZIndex="1" />
-                                    </Grid>
-                                </StackPanel>
+                            <Grid ColumnDefinitions="*,Auto" RowDefinitions="*" VerticalAlignment="Stretch">
+                                <Border
+                                    MaxHeight="200"
+                                    Grid.Column="0"
+                                    IsVisible="True"
+                                    Padding="0"
+                                    BorderThickness="1" 
+                                    CornerRadius="4">
+                                    <ScrollViewer
+                                        VerticalScrollBarVisibility="Visible">
+                                        <StackPanel
+                                            VerticalAlignment="Top">
+                                            <TextBlock
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                IsVisible="{Binding !#ShowToggleButton.IsChecked}"
+                                                Text="{Binding SecretHidden}" />
+                                            <TextBlock
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Top"
+                                                TextWrapping="Wrap"
+                                                IsVisible="{Binding #ShowToggleButton.IsChecked}"
+                                                Text="{Binding SecretPlainText}" />
+                                        </StackPanel>
+
+                                    </ScrollViewer>
                                 </Border>
-                            </ScrollViewer>
+
+                                <ToggleButton
+                                    Name="ShowToggleButton"
+                                    Grid.Column="1"
+                                    Height="30"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Top"
+                                    Command="{Binding ShouldShowValueCommand}"
+                                    CommandParameter="{Binding ShowValue}"
+                                    Content="&#xE7B3;"
+                                    CornerRadius="4"
+                                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                                    FontSize="20"
+                                    IsChecked="{Binding ShowValue}"
+                                    RenderOptions.TextRenderingMode="Antialias"
+                                    Theme="{StaticResource TransparentToggleButton}"
+                                    ToolTip.Tip="Show/Hide"
+                                    ToolTip.VerticalOffset="10"
+                                    ZIndex="1" />
+                            </Grid>
                         </Border>
 
                         <!--<Button
